@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/text_menuitem"
+        android:title="Text"
+        android:icon="@drawable/baseline_translate_24"
+        />
+    <item
+        android:id="@+id/imgtotxt_menuitem"
+        android:title="Image"
+        android:icon="@drawable/baseline_add_a_photo_24"
+        />
+    <item
+        android:id="@+id/chatbot_menuitem"
+        android:title="Bot"
+        android:icon="@drawable/chat_bot_24"
+        />
+</menu>
