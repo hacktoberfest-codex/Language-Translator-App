@@ -74,6 +74,6 @@ public class TextFragment extends Fragment {
     }
 
     public void switchTextBox(View view){
-        
+
     }
 }
