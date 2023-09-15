@@ -2,5 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/archivo_black</item>
+        <item>@font/inika</item>
+        <item>@font/inria_sans</item>
     </array>
 </resources>

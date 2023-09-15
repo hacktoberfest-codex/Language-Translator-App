@@ -8,28 +8,30 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <EditText
         android:id="@+id/from_textbox"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginHorizontal="50dp"
+        android:fontFamily="@font/inika"
+android:layout_marginHorizontal="50dp"
         android:background="@drawable/text_input_background"
         android:clickable="true"
         android:gravity="start|top"
         android:padding="15dp"
         android:text="From"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.541" />
 
     <EditText
         android:id="@+id/to_textbox"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginHorizontal="50dp"
+        android:fontFamily="@font/inika" android:layout_marginHorizontal="50dp"
         android:background="@drawable/text_input_background"
         android:clickable="true"
         android:gravity="start|top"
@@ -37,54 +39,71 @@
         android:text="To"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.412" />
 
-    <ImageView
-        android:layout_width="41dp"
-        android:layout_height="42dp"
-        android:src="@drawable/exchange_24"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:cardCornerRadius="29dp"
+        app:cardElevation="11dp"
+        android:backgroundTint="@color/light_grey"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/to_lang"
-        app:layout_constraintStart_toEndOf="@+id/from_lang"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.5">
 
-    <Button
-        android:id="@+id/from_lang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/text_input_background"
-        android:clickable="true"
-        android:text="English"
-        app:layout_constraintBottom_toTopOf="@+id/to_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/from_textbox"
-        app:layout_constraintVertical_bias="0.548" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
-    <Button
-        android:id="@+id/to_lang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/text_input_background"
-        android:clickable="true"
-        android:text="Punjabi"
-        app:layout_constraintBottom_toTopOf="@+id/to_textbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.844"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/from_textbox"
-        app:layout_constraintVertical_bias="0.548" />
+            <Button
+                android:id="@+id/from_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:backgroundTint="@color/theme_blue"
+                android:fontFamily="@font/inria_sans"
+                android:letterSpacing="0.1"
+                android:clickable="true"
+                android:text="English" />
+
+            <ImageView
+                android:layout_width="41dp"
+                android:layout_height="42dp"
+                android:layout_margin="@dimen/_8sdp"
+                app:tint="@color/dark_grey"
+                android:src="@drawable/exchange_alt" />
+
+            <Button
+                android:id="@+id/to_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:textColor="@color/mid_grey"
+                android:fontFamily="@font/inria_sans"
+                android:letterSpacing="0.1"
+                android:text="Punjabi" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
     <ImageButton
         android:id="@+id/from_audio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="28dp"
         android:src="@drawable/baseline_volume_mute_24"
         app:layout_constraintBottom_toTopOf="@+id/from_textbox"
         app:layout_constraintEnd_toEndOf="parent"
