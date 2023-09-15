@@ -6,11 +6,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.example.translatorapp.R;
+import com.example.translatorapp.databinding.FragmentTextBinding;
+import com.example.translatorapp.ui.elements.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +33,8 @@ public class TextFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private FragmentTextBinding binding;
 
     public TextFragment() {
         // Required empty public constructor
@@ -63,13 +71,44 @@ public class TextFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_text, container, false);
+        binding = FragmentTextBinding.inflate(inflater,container,false);
+        binding.fromLang.setOnClickListener(v -> {
+            PopupMenu popupMenu = new PopupMenu(getActivity(),v);
+
+            popupMenu.getMenu().add("English");
+            popupMenu.getMenu().add("Punjabi");
+            popupMenu.getMenu().add("Odia");
+            popupMenu.getMenu().add("Hindi");
+            popupMenu.getMenu().add("Bangla");
+            Log.d("ONClick","Should happen");
+            popupMenu.setOnMenuItemClickListener(menuItem -> {
+                binding.fromLang.setText(menuItem.getTitle());
+                return true;
+            });
+            popupMenu.show();
+        });
+
+        binding.toLang.setOnClickListener(v -> {
+            PopupMenu popupMenu = new PopupMenu(getActivity(),v);
+
+            popupMenu.getMenu().add("English");
+            popupMenu.getMenu().add("Punjabi");
+            popupMenu.getMenu().add("Odia");
+            popupMenu.getMenu().add("Hindi");
+            popupMenu.getMenu().add("Bangla");
+
+            popupMenu.setOnMenuItemClickListener(menuItem -> {
+                binding.toLang.setText(menuItem.getTitle());
+                return true;
+            });
+            popupMenu.show();
+        });
+        return (View)binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
     }
 

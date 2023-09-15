@@ -47,17 +47,18 @@
         android:layout_height="42dp"
         android:src="@drawable/exchange_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/to_lang"
+        app:layout_constraintStart_toEndOf="@+id/from_lang"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/from_lang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/text_input_background"
-        android:text="Engligh"
+        android:clickable="true"
+        android:text="English"
         app:layout_constraintBottom_toTopOf="@+id/to_textbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.158"
@@ -66,11 +67,12 @@
         app:layout_constraintVertical_bias="0.548" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/to_lang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/text_input_background"
-        android:text="Turkish"
+        android:clickable="true"
+        android:text="Punjabi"
         app:layout_constraintBottom_toTopOf="@+id/to_textbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.844"
