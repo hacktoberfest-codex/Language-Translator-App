@@ -79,6 +79,17 @@
             android:text="Not yet registerd? SignUp"
             android:textSize="15dp" />
 
-
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="270dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="*Forgot Password?"
+            android:textColor="#FF0000"
+            android:textSize="15dp"
+            android:visibility="gone"
+            />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -83,13 +83,26 @@
             android:inputType="textPassword"
             tools:layout_editor_absoluteX="39dp"
             tools:layout_editor_absoluteY="407dp" />
+        <EditText
+            android:id="@+id/signupconfirmpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginRight="30dp"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="407dp" />
 
         <Button
             android:id="@+id/signupbtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="310dp"
+            android:layout_marginTop="360dp"
             android:layout_marginRight="30dp"
             android:text="Sign Up"
             android:textSize="18sp"
@@ -99,7 +112,7 @@
             android:id="@+id/signupredirectlogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="380dp"
+            android:layout_marginTop="420dp"
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:text="Already an User? Login"
