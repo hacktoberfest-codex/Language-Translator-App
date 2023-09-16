@@ -6,6 +6,9 @@ android {
     namespace = "com.example.translatorapp"
     compileSdk = 33
 
+    buildFeatures{
+        viewBinding = true;
+    }
     defaultConfig {
         applicationId = "com.example.translatorapp"
         minSdk = 26
@@ -56,4 +59,11 @@ dependencies {
     implementation ("com.intuit.sdp:sdp-android:1.1.0")
 //    round image view
     implementation("com.makeramen:roundedimageview:2.3.0")
+
+//    textTranslation:
+    implementation ("com.google.mlkit:translate:17.0.1")
+
+//    lottie animation:
+    implementation( "com.airbnb.android:lottie:6.1.0")
+
 }
