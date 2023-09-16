@@ -23,14 +23,29 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
+        getByName("release"){
+            setProperty("archivesBaseName","Bhasaa Samvad")
+        }
+    }
+    buildFeatures{
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
-
+configurations.all {
+    resolutionStrategy {
+        eachDependency {
+            if ((requested.group == "org.jetbrains.kotlin") && (requested.name.startsWith("kotlin-stdlib"))) {
+                useVersion("1.8.0")
+            }
+        }
+    }
+}
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
