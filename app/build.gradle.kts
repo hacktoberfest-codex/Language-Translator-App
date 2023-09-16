@@ -66,4 +66,10 @@ dependencies {
 //    lottie animation:
     implementation( "com.airbnb.android:lottie:6.1.0")
 
+//    Text recoginition:
+
+    implementation ("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+
 }
