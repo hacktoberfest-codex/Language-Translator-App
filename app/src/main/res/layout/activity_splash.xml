@@ -4,15 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.elements.MainActivity">
+    android:background="#31B1F9"
+    tools:context=".ui.elements.SplashActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:alpha="1"
+        android:fontFamily="@font/archivo_black"
+        android:letterSpacing="-0.02"
+        android:text="Bhasaa Samvad."
+        android:textColor="@color/white"
+        android:textSize="61dp"
+        android:gravity="clip_vertical"
+        android:paddingHorizontal="50dp"
+        android:fallbackLineSpacing="true"
+        android:lineHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

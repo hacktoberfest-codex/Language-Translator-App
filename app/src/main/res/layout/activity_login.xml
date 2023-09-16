@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.elements.LoginActivity"
+    >
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@color/white"
+        android:padding="20dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/inria_sans_bold"
+            android:gravity="center"
+            android:text="Log In"
+            android:textColor="@color/dark_grey"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/signinemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="30dp"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/dark_grey"
+            android:fontFamily="@font/inika"
+            android:hint="Email"
+            android:inputType="textWebEmailAddress"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="407dp" />
+
+        <EditText
+            android:id="@+id/signinpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="30dp"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawableTint="@color/dark_grey"
+            android:drawablePadding="10dp"
+            android:hint="Password"
+            android:fontFamily="@font/inika"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="407dp" />
+
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/inria_sans"
+            android:text="Log In"
+            android:shadowRadius="5"
+            android:shadowDy="4"
+            android:shadowDx="4"
+            android:backgroundTint="@color/theme_blue"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/loginredirecttosignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="240dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="Not yet registerd? SignUp"
+            android:fontFamily="@font/inria_sans_light"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="270dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:fontFamily="@font/inria_sans_light"
+            android:text="*Forgot Password?"
+            android:textColor="#FF0000"
+            android:textSize="15dp"
+            android:visibility="gone"
+            />
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
