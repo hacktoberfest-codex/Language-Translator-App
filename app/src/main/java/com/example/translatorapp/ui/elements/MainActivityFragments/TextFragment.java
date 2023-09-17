@@ -1,17 +1,20 @@
 package com.example.translatorapp.ui.elements.MainActivityFragments;
 
+import android.Manifest;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.speech.tts.TextToSpeech;
-import android.speech.tts.UtteranceProgressListener;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,29 +23,36 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.translatorapp.R;
 import com.example.translatorapp.databinding.FragmentTextBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.mlkit.common.model.DownloadConditions;
 import com.google.mlkit.nl.translate.TranslateLanguage;
 import com.google.mlkit.nl.translate.Translation;
 import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.TextRecognition;
+import com.google.mlkit.vision.text.TextRecognizer;
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.Locale;
 
 
 public class TextFragment extends Fragment {
 
     FragmentTextBinding binding;
+    private TextRecognizer textRecognizer;
     private Spinner fromLang,toLang;
     private TextToSpeech textToSpeech;
     private TranslatorOptions translatorOptions;
     private DownloadConditions conditions ;
     private Translator translator;
+    private static final String URI_KEY = "KEY_009";
+
 /*
 "Spanish",
             "French",
@@ -65,17 +75,42 @@ public class TextFragment extends Fragment {
             "Tamil",
             "Kannada"
  */
+
     private static String[] LangList = {
             "English",
             "Hindi",
 
     };
     private String fromLangCode,toLangCode;
+    private Uri GalData;
+
     public TextFragment() {
         // Required empty public constructor
     }
 
 
+    public static TextFragment getInstance(Uri galData)
+    {
+        TextFragment textFragment = new TextFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(URI_KEY, galData);
+        textFragment.setArguments(bundle);
+        return textFragment;
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments()!=null)
+        {
+            this.GalData = getArguments().getParcelable(URI_KEY);
+            try {
+                ImageToText(GalData);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Nullable
     @Override
@@ -83,6 +118,9 @@ public class TextFragment extends Fragment {
         binding = FragmentTextBinding.inflate(getLayoutInflater());
         fromLang = binding.fromLang;
         toLang = binding.toLang;
+
+
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
                 R.layout.spinner_list_view,LangList);
@@ -227,7 +265,52 @@ public class TextFragment extends Fragment {
                 }
             }
         });
+
+
+        
         return binding.getRoot();
+    }
+    private void ImageToText(Uri uri) throws IOException {
+
+        InputImage inputImage = InputImage.fromFilePath(getContext(),uri);
+        textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
+
+        Task<com.google.mlkit.vision.text.Text> textResult = textRecognizer.process(inputImage);
+
+        textResult.addOnSuccessListener(new OnSuccessListener<com.google.mlkit.vision.text.Text>() {
+            @Override
+            public void onSuccess(com.google.mlkit.vision.text.Text text) {
+
+                ProcessText(text);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void ProcessText(com.google.mlkit.vision.text.Text text) {
+        binding.fromTextbox.setText("");
+        for (com.google.mlkit.vision.text.Text.TextBlock block : text.getTextBlocks()) {
+            Point[] point = block.getCornerPoints();
+            Rect rect = block.getBoundingBox();
+            String textBlock = block.getText();
+
+            for (com.google.mlkit.vision.text.Text.Line line : block.getLines()) {
+                Point[] pointLine = line.getCornerPoints();
+                Rect rectLine = line.getBoundingBox();
+                String textBlockLine = line.getText();
+                for (com.google.mlkit.vision.text.Text.Element element : line.getElements()) {
+                    Point[] pointEl = element.getCornerPoints();
+                    Rect rectEl = element.getBoundingBox();
+
+                    binding.fromTextbox.append(element.getText() + " ");
+                }
+            }
+            binding.fromTextbox.append("\n");
+        }
     }
 
     private void Speak(String text) {
@@ -285,6 +368,7 @@ public class TextFragment extends Fragment {
         }
     }
 
+    
 
     private String GetLangCode(String s) {
 
@@ -362,12 +446,17 @@ public class TextFragment extends Fragment {
         return langCode;
     }
 
+
     @Override
     public void onPause() {
         super.onPause();
+
         if(textToSpeech.isSpeaking())
         {
             textToSpeech.stop();
         }
     }
+
+
+
 }

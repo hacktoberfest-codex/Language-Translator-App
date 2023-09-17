@@ -6,9 +6,12 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,9 +23,12 @@
         android:theme="@style/Theme.TranslatorApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.elements.CropperActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.elements.SplashActivity"
-            android:parentActivityName=".ui.elements.MainActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:parentActivityName=".ui.elements.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,20 +37,25 @@
         </activity>
         <activity
             android:name=".ui.elements.LoginActivity"
-            android:parentActivityName=".ui.elements.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.elements.MainActivity" />
         <activity
             android:name=".ui.elements.SignUpActivity"
-            android:parentActivityName=".ui.elements.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.elements.MainActivity" />
         <activity
             android:name=".ui.elements.MainActivity"
-            android:exported="false"/>,
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
