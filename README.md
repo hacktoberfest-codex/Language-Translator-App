@@ -1,5 +1,5 @@
 # Team-67
-#Bhasaa Samvad : Your All-in-One Language Translation App
+**Bhasaa Samvad ** : Your All-in-One Language Translation App
 Welcome to Bhasaa Samvad, the ultimate language translation app developed by Team 67 for the **Smart India Hackathon(2023)**
 
 Overview:
