@@ -79,6 +79,26 @@ public class TextFragment extends Fragment {
     private static String[] LangList = {
             "English",
             "Hindi",
+            "Spanish",
+            "French",
+            "German",
+            "Italian",
+            "Portuguese",
+            "Dutch",
+            "Russian",
+            "Chinese",
+            "Japanese",
+            "Korean",
+            "Arabic",
+            "Turkish",
+            "Bengali",
+            "Urdu",
+            "Malay",
+            "Thai",
+            "Marathi",
+            "Telugu",
+            "Tamil",
+            "Kannada"
 
     };
     private String fromLangCode,toLangCode;

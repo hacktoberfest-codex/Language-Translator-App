@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/dark_grey"
     tools:context=".ui.elements.MainActivityFragments.ChatBotFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -28,10 +28,12 @@
                 android:id="@+id/messageEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:hint="Type your message..."
                 android:inputType="textMultiLine|textCapSentences|textAutoCorrect|textAutoComplete"
                 android:maxLength="500"
                 android:maxLines="5"
+                android:textColor="@color/black"
                 android:layout_margin="8dp"
                 android:layout_weight="7"
                 />
