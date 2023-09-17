@@ -13,14 +13,26 @@
         android:theme="@style/Theme.BhasaaSamvad"
         tools:targetApi="31">
         <activity
-            android:name=".ui.elements.MainActivity"
-            android:exported="true">
+            android:name=".ui.elements.SplashActivity"
+            android:parentActivityName=".ui.elements.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.elements.LoginActivity"
+            android:parentActivityName=".ui.elements.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.elements.SignUpActivity"
+            android:parentActivityName=".ui.elements.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.elements.MainActivity"
+            android:exported="false"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
